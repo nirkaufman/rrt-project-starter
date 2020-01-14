@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const Register = () => {
     return (
-        <div className="container">
+        <>
             <h3>Register</h3>
             <form>
                 <input type="text" placeholder="Name..."/>
@@ -12,7 +12,7 @@ const Register = () => {
                 <button>Register</button>
             </form>
             <Link to="/login">Or sign in with your email</Link>
-        </div>
+        </>
     );
 };
 

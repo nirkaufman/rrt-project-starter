@@ -1,10 +1,14 @@
 import React from 'react';
 
+//todo: mock data remove when done
+
+
 const Member = () => {
     return (
-        <div>
-            <h1>Member</h1>
-        </div>
+        <>
+            <h3>Member</h3>
+        </>
+
     );
 };
 
