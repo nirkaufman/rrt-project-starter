@@ -9,9 +9,10 @@ interface MemberProps {
 const Member = ({member}: MemberProps) => {
     return (
         <>
+          <img src={member.picture} alt={member.name}/>
             <Name>{member.name}</Name>
-            <Info>{member.companyName} | {member.city}</Info>
-            <Info>{member.email} | <strong>{member.website}</strong></Info>
+            <Info>{member.email} | {member.phone}</Info>
+            <Info>{member.city}</Info>
         </>
     );
 };

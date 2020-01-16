@@ -16,8 +16,8 @@ const selectedMember = {
   name: 'Nir Kaufman',
   email: 'nir@500tech.com',
   city: 'New York',
-  website: 'nir.life',
-  companyName: '500Tech'
+  phone: '12341234',
+  picture: "https://randomuser.me/api/portraits/thumb/men/6.jpg"
 };
 
 const albums: AlbumInfo[] = [

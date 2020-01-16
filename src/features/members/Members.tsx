@@ -12,33 +12,34 @@ const members: MemberInfo[] = [
     name: 'Nir Kaufman',
     email: 'nir@500tech.com',
     city: 'New York',
-    website: 'nir.life',
-    companyName: '500Tech'
+    phone: '12341234',
+    picture: "https://randomuser.me/api/portraits/thumb/men/6.jpg"
   },
   {
     id: 2,
     name: 'Nir Kaufman',
     email: 'nir@500tech.com',
     city: 'New York',
-    website: 'nir.life',
-    companyName: '500Tech'
+    phone: '12341234',
+    picture: "https://randomuser.me/api/portraits/thumb/men/6.jpg"
   },
   {
     id: 3,
     name: 'Nir Kaufman',
     email: 'nir@500tech.com',
     city: 'New York',
-    website: 'nir.life',
-    companyName: '500Tech'
+    phone: '12341234',
+    picture: "https://randomuser.me/api/portraits/thumb/men/6.jpg"
   },
   {
     id: 4,
     name: 'Nir Kaufman',
     email: 'nir@500tech.com',
     city: 'New York',
-    website: 'nir.life',
-    companyName: '500Tech'
+    phone: '12341234',
+    picture: "https://randomuser.me/api/portraits/thumb/men/6.jpg"
   },
+
 ];
 
 const Members = () => {
@@ -57,9 +58,9 @@ const Members = () => {
               <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>city</th>
-                <th>website</th>
-                <th>company name</th>
+                <th>City</th>
+                <th>Phone</th>
+                <th>Picture</th>
                 <th>selected</th>
               </tr>
               </thead>
@@ -69,8 +70,8 @@ const Members = () => {
                     <td>{member.name}</td>
                     <td>{member.email}</td>
                     <td>{member.city}</td>
-                    <td>{member.website}</td>
-                    <td>{member.companyName}</td>
+                    <td>{member.phone}</td>
+                    <td><img src={member.picture} alt={member.name}/></td>
                     <td><input type="checkbox"/></td>
                   </TableRow>
               ))}
