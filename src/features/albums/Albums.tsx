@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {AlbumInfo} from "./types";
+import {AlbumInfo} from "../../shared/types/albums";
 import {TableHeader} from "../../shared/components/TableHeader";
 import {Link} from "react-router-dom";
 import styled from "styled-components";

@@ -7,14 +7,18 @@ import Header from '../shared/components/Header';
 import NewMember from "../features/members/NewMember";
 import Albums from '../features/albums/Albums';
 import MemberAlbums from "../features/albums/MemberAlbums";
+import {Provider} from 'react-redux';
+import {store} from "./store";
+
 
 function App() {
   return (
-      <Router>
+      <Provider store={store}>
+        <Router>
           <div className="container">
-          <Header />
-          <Switch>
-              <Route path="/login"><Login /></Route>
+            <Header/>
+            <Switch>
+              <Route path="/login"><Login/></Route>
               <Route path="/register"><Register/></Route>
 
               <Route exact path="/members"><Members/></Route>
@@ -24,9 +28,10 @@ function App() {
               <Route exact path="/albums/group"><MemberAlbums/></Route>
 
               <Redirect from="*" to="/login"/>
-          </Switch>
+            </Switch>
           </div>
-      </Router>
+        </Router>
+      </Provider>
   );
 }
 

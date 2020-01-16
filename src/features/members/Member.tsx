@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {MemberInfo} from "./types";
+import {MemberInfo} from "../../shared/types/members";
 
 interface MemberProps {
  member: MemberInfo
