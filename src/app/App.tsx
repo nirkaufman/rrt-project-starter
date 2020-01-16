@@ -6,7 +6,7 @@ import Members from "../features/members/Members";
 import Header from '../shared/components/Header';
 import NewMember from "../features/members/NewMember";
 import Albums from '../features/albums/Albums';
-
+import MemberAlbums from "../features/albums/MemberAlbums";
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
               <Route exact path="/members"><Members/></Route>
               <Route exact path="/members/new"><NewMember/></Route>
 
-              <Route exact path="/Albums"><Albums/></Route>
+              <Route exact path="/albums"><Albums/></Route>
+              <Route exact path="/albums/group"><MemberAlbums/></Route>
 
               <Redirect from="*" to="/login"/>
           </Switch>

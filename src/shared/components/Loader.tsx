@@ -2,14 +2,14 @@ import React from 'react';
 import styled, {keyframes} from "styled-components";
 
 function Loader() {
-    return (
-        <RippleContainer>
+  return (
+      <RippleContainer>
         <Ripple>
-            <div/>
-            <div/>
+          <div/>
+          <div/>
         </Ripple>
-        </RippleContainer>
-    );
+      </RippleContainer>
+  );
 }
 
 const rotate = keyframes`
@@ -21,8 +21,8 @@ const rotate = keyframes`
     opacity: 1;
   }
   100% {
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 72px;
     height: 72px;
     opacity: 0;
@@ -51,7 +51,6 @@ const Ripple = styled.div`
   animation-delay: -0.5s;
 }
 `;
-
 
 
 export default Loader;
