@@ -1,10 +1,14 @@
 import {createSlice, PayloadAction, SliceCaseReducers} from '@reduxjs/toolkit';
-import {User} from "../../shared/types/user";
+import {CurrentUser, User} from "../../shared/types/user";
+import {AppState} from "../../shared/types/app-state";
 
-export const authSlice = createSlice<User, SliceCaseReducers<User>>({
+export const authSlice = createSlice<CurrentUser, SliceCaseReducers<CurrentUser>>({
   name: 'currentUser',
-  initialState: {},
+  initialState: null,
   reducers: {
-    userLoaded: (state:User, action:PayloadAction<User>) => action.payload,
+    userLoggedIn: (state: CurrentUser, action: PayloadAction<User>) => action.payload,
+    userLoggedOut: (state: CurrentUser, action: PayloadAction<null>) => action.payload,
   }
 });
+
+export const currentUserSelector = (state: AppState) => state.currentUser;

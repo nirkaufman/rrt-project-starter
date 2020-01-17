@@ -1,11 +1,11 @@
-import {User} from "./user";
+import {CurrentUser, User} from "./user";
 import {AlbumInfo} from "./albums";
 import {MemberInfo} from "./members";
 import {Ui} from "./ui";
 
 export interface AppState {
   ui: Ui,
-  currentUser: User;
+  currentUser: CurrentUser;
   albums: AlbumInfo[];
   members: MemberInfo[];
 }
