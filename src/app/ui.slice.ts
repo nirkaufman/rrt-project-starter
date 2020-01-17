@@ -4,7 +4,15 @@ import {AppState} from "../shared/types/app-state";
 
 export const uiSlice = createSlice<Ui, SliceCaseReducers<Ui>>({
   name: 'ui',
-  initialState: {selectedMembersIds: []},
+  initialState: {
+    selectedMembersIds: [],
+    newMemberWizard: {
+      started: false,
+      completed: false,
+      currentStep: 1,
+      memberId: null
+    }
+  },
   reducers: {
     memberSelected: (state: Ui, action: PayloadAction<number>) => {
       if (state.selectedMembersIds.includes(action.payload)) {
@@ -13,8 +21,30 @@ export const uiSlice = createSlice<Ui, SliceCaseReducers<Ui>>({
       } else {
         state.selectedMembersIds.push(action.payload);
       }
+    },
+    wizardStepCompleted: (state:Ui, actions:PayloadAction<{ step:number, memberId:number }>) => {
+      const completedStepNumber = actions.payload.step;
+
+      if(completedStepNumber === 1) {
+        state.newMemberWizard.started = true;
+        state.newMemberWizard.currentStep = 2;
+        state.newMemberWizard.memberId = actions.payload.memberId;
+      }
+
+      if(completedStepNumber === 2) {
+        state.newMemberWizard.currentStep = 3
+      }
+
+      if(completedStepNumber === 3) {
+        state.newMemberWizard.currentStep = 1;
+        state.newMemberWizard.memberId = actions.payload.memberId;
+        state.newMemberWizard.completed = true;
+        state.newMemberWizard.started = false;
+      }
     }
   }
 });
 
+// selectors
+export const memberWizardSelector = (state:AppState) => state.ui.newMemberWizard;
 export const selectedMembersSelector = (state:AppState) => state.ui.selectedMembersIds;

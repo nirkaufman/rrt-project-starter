@@ -1,19 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import {TableHeader} from "../../shared/components/TableHeader";
 import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {memberWizardSelector, uiSlice} from "../../app/ui.slice";
+import {AppState} from "../../shared/types/app-state";
+import {NewMemberWizard} from "../../shared/types/new-member-wizard";
 
 function NewMember() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const dispatch = useDispatch();
+  const {currentStep} = useSelector<AppState, NewMemberWizard>(memberWizardSelector);
 
   const nextStep = () => {
-    if (currentStep < 3) setCurrentStep(step => step + 1);
-    if (currentStep === 3) return;
+    dispatch(uiSlice.actions.wizardStepCompleted({step: currentStep}));
   };
 
   const previousStep = () => {
-    if (currentStep > 1) setCurrentStep(step => step - 1);
-    if (currentStep === 1) return;
+    //TODO: (student) implement previous step
   };
 
   return (
@@ -67,9 +70,10 @@ function NewMember() {
             </button>
 
             <button type="button"
-                    disabled={currentStep === 3}
                     onClick={nextStep}
-                    className="button button-outline">next &gt;&gt;</button>
+                    className="button button-outline">
+                    { currentStep === 3 ? 'submit' :  'next'}&gt;&gt;
+            </button>
 
 
           </StepActions>

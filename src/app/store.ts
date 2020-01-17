@@ -1,7 +1,7 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {AppState} from "../shared/types/app-state";
 import {albumsSlice} from "../features/albums/albums-slice";
-import {membersSlice} from "../features/members/members-slice";
+import {membersSlice} from "../features/members/members.slice";
 import {authSlice} from "../features/auth/auth-slice";
 import {uiSlice} from "./ui.slice";
 

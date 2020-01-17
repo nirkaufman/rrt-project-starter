@@ -1,18 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import {useSelector} from "react-redux";
+import {AppState} from "../types/app-state";
+import {memberWizardSelector} from "../../app/ui.slice";
+import {NewMemberWizard} from "../types/new-member-wizard";
 
 interface AlertProps {
-    text?: string,
-    onClose?: any
+  text?: string,
+  onClose?: any
 }
 
 function Alert({text, onClose}: AlertProps) {
-    return text ? (
-        <AlertContainer>
-            <span>{text}</span>
-            <CloseButton onClick={onClose}>X</CloseButton>
-        </AlertContainer>
-    ) : null;
+  const {completed, started} = useSelector<AppState, NewMemberWizard>(memberWizardSelector);
+
+  return started && !completed ?  (
+      <AlertContainer>
+        <span>{text}</span>
+        <CloseButton onClick={onClose}>X</CloseButton>
+      </AlertContainer>
+  ): null;
 }
 
 const AlertContainer = styled.div`

@@ -6,9 +6,10 @@ import {TableRow} from "../../shared/components/TableRow";
 import styled from "styled-components";
 import {apiRequest} from "../../shared/utils/api";
 import {useDispatch, useSelector} from "react-redux";
-import {membersInfoSelector, membersSlice} from "./members-slice";
+import {membersInfoSelector, membersSlice} from "./members.slice";
 import {AppState} from "../../shared/types/app-state";
 import {selectedMembersSelector, uiSlice} from "../../app/ui.slice";
+import Alert from "../../shared/components/Alert";
 
 const Members = () => {
       const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const Members = () => {
 
       return (
           <>
+            <Alert text={"Member creation in progress. Please complete. "}/>
             <TableHeader>
               <h3>Members</h3>
               <TableHeaderRow>
