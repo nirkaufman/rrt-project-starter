@@ -1,15 +1,20 @@
 import React from 'react';
 import styled, {keyframes} from "styled-components";
+import {useSelector} from "react-redux";
+import {AppState} from "../types/app-state";
+import {loadingSelector} from "../../app/ui.slice";
 
 function Loader() {
-  return (
+  const loading = useSelector<AppState, boolean>(loadingSelector);
+
+  return loading ? (
       <RippleContainer>
         <Ripple>
           <div/>
           <div/>
         </Ripple>
       </RippleContainer>
-  );
+  ): null;
 }
 
 const rotate = keyframes`

@@ -2,5 +2,6 @@ import {NewMemberWizard} from "./new-member-wizard";
 
 export interface Ui {
   selectedMembersIds: number[]
-  newMemberWizard: NewMemberWizard
+  newMemberWizard: NewMemberWizard,
+  loading: boolean
 }

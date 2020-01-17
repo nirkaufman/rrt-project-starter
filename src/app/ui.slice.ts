@@ -1,19 +1,25 @@
 import {createSlice, PayloadAction, SliceCaseReducers} from '@reduxjs/toolkit';
 import {Ui} from "../shared/types/ui";
 import {AppState} from "../shared/types/app-state";
+import {membersSlice} from "../features/members/members.slice";
 
 export const uiSlice = createSlice<Ui, SliceCaseReducers<Ui>>({
   name: 'ui',
   initialState: {
     selectedMembersIds: [],
+    loading: false,
     newMemberWizard: {
       started: false,
       completed: false,
       currentStep: 1,
-      memberId: null
+      memberId: null,
     }
   },
   reducers: {
+    loaderStarted: (state:Ui, action:PayloadAction<boolean>) => {state.loading = true},
+    uiStateRestored: (state: Ui, action:PayloadAction<Ui>) => {
+      return action.payload;
+    },
     memberSelected: (state: Ui, action: PayloadAction<number>) => {
       if (state.selectedMembersIds.includes(action.payload)) {
         const index = state.selectedMembersIds.indexOf(action.payload);
@@ -42,9 +48,15 @@ export const uiSlice = createSlice<Ui, SliceCaseReducers<Ui>>({
         state.newMemberWizard.started = false;
       }
     }
+  },
+  extraReducers: builder => {
+    builder.addCase(membersSlice.actions.membersLoaded, (state, action) => {
+      state.loading = false
+    })
   }
 });
 
 // selectors
+export const loadingSelector = (state:AppState) => state.ui.loading;
 export const memberWizardSelector = (state:AppState) => state.ui.newMemberWizard;
 export const selectedMembersSelector = (state:AppState) => state.ui.selectedMembersIds;

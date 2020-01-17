@@ -10,6 +10,7 @@ import {membersInfoSelector, membersSlice} from "./members.slice";
 import {AppState} from "../../shared/types/app-state";
 import {selectedMembersSelector, uiSlice} from "../../app/ui.slice";
 import Alert from "../../shared/components/Alert";
+import Loader from "../../shared/components/Loader";
 
 const Members = () => {
       const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const Members = () => {
       // when the component loads - get members and dispatch to store
       useEffect(() => {
         if (members.length === 0) {
+          dispatch(uiSlice.actions.loaderStarted(true));
           apiRequest({path: '/members'})
               .then(results => dispatch(membersSlice.actions.membersLoaded(results.data)))
         }
@@ -59,7 +61,7 @@ const Members = () => {
                     <td>{member.city}</td>
                     <td>{member.phone}</td>
                     <td><img src={member.picture} alt={member.name}/></td>
-                    <td><input onChange={() => selectMember(member.id)} type="checkbox"/></td>
+                    <td><input checked={selectedMembers.includes(member.id)} onChange={() => selectMember(member.id)} type="checkbox"/></td>
                   </TableRow>
               ))}
               </tbody>
