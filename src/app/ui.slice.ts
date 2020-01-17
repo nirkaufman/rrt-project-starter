@@ -9,6 +9,7 @@ export const uiSlice = createSlice<Ui, SliceCaseReducers<Ui>>({
     selectedMembersIds: [],
     loading: false,
     message: '',
+    currentRoute: '/',
     newMemberWizard: {
       started: false,
       completed: false,
@@ -17,6 +18,7 @@ export const uiSlice = createSlice<Ui, SliceCaseReducers<Ui>>({
     }
   },
   reducers: {
+    routeUpdated: (state:Ui, actions: PayloadAction<string>) => {state.currentRoute = actions.payload},
     subscriptionStarted: (state:Ui, actions: PayloadAction<string>) => {state.message = actions.payload},
     loaderStarted: (state:Ui, action:PayloadAction<boolean>) => {state.loading = true},
     uiStateRestored: (state: Ui, action:PayloadAction<Ui>) => {
@@ -63,3 +65,4 @@ export const loadingSelector = (state:AppState) => state.ui.loading;
 export const memberWizardSelector = (state:AppState) => state.ui.newMemberWizard;
 export const selectedMembersSelector = (state:AppState) => state.ui.selectedMembersIds;
 export const messageSelector = (state:AppState) => state.ui.message;
+export const currentRouteSelector = (state:AppState) => state.ui.currentRoute;

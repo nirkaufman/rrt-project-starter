@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import {Redirect, Route, Switch, useHistory} from 'react-router-dom';
 import Login from '../features/auth/Login';
 import Register from "../features/auth/Register";
 import Members from "../features/members/Members";
@@ -14,6 +14,13 @@ import Loader from "../shared/components/Loader";
 
 function App() {
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    history.listen( (location) => {
+      dispatch(uiSlice.actions.routeUpdated(location.pathname))
+    })
+  }, []);
 
   useEffect(() => {
     try {
@@ -26,7 +33,6 @@ function App() {
 
 
   return (
-      <Router>
         <div className="container">
           <Loader/>
           <Header/>
@@ -43,7 +49,6 @@ function App() {
             <Redirect from="*" to="/login"/>
           </Switch>
         </div>
-      </Router>
   );
 }
 

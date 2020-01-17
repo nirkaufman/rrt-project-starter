@@ -4,5 +4,6 @@ export interface Ui {
   selectedMembersIds: number[]
   newMemberWizard: NewMemberWizard,
   loading: boolean,
-  message: string
+  message: string,
+  currentRoute: string
 }
