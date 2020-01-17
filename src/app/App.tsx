@@ -13,7 +13,7 @@ import {uiSlice} from "./ui.slice";
 import Loader from "../shared/components/Loader";
 import {currentUserSelector} from "../features/auth/auth-slice";
 import {AppState} from "../shared/types/app-state";
-import {CurrentUser, User} from "../shared/types/user";
+import {CurrentUser} from "../shared/types/user";
 
 function App() {
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import {CurrentUser, User} from "./user";
+import {CurrentUser} from "./user";
 import {AlbumInfo} from "./albums";
 import {MemberInfo} from "./members";
 import {Ui} from "./ui";
