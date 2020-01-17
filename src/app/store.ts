@@ -5,6 +5,7 @@ import {membersSlice} from "../features/members/members.slice";
 import {authSlice} from "../features/auth/auth-slice";
 import {uiSlice} from "./ui.slice";
 import {persistent} from "../shared/middleware/persistent";
+import {notifications} from "../shared/middleware/notifications";
 
 
 export const store = configureStore<AppState>({
@@ -14,5 +15,5 @@ export const store = configureStore<AppState>({
     albums: albumsSlice.reducer,
     members: membersSlice.reducer
   },
-  middleware: [persistent]
+  middleware: [persistent, notifications]
 });

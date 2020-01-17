@@ -8,6 +8,7 @@ export const uiSlice = createSlice<Ui, SliceCaseReducers<Ui>>({
   initialState: {
     selectedMembersIds: [],
     loading: false,
+    message: '',
     newMemberWizard: {
       started: false,
       completed: false,
@@ -16,6 +17,7 @@ export const uiSlice = createSlice<Ui, SliceCaseReducers<Ui>>({
     }
   },
   reducers: {
+    subscriptionStarted: (state:Ui, actions: PayloadAction<string>) => {state.message = actions.payload},
     loaderStarted: (state:Ui, action:PayloadAction<boolean>) => {state.loading = true},
     uiStateRestored: (state: Ui, action:PayloadAction<Ui>) => {
       return action.payload;
@@ -60,3 +62,4 @@ export const uiSlice = createSlice<Ui, SliceCaseReducers<Ui>>({
 export const loadingSelector = (state:AppState) => state.ui.loading;
 export const memberWizardSelector = (state:AppState) => state.ui.newMemberWizard;
 export const selectedMembersSelector = (state:AppState) => state.ui.selectedMembersIds;
+export const messageSelector = (state:AppState) => state.ui.message;

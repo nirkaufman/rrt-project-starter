@@ -31,13 +31,17 @@ const Members = () => {
         dispatch(uiSlice.actions.memberSelected(memberId));
       };
 
+      const subscribeToNotifications = () => {
+        dispatch(uiSlice.actions.subscriptionStarted(true))
+      };
+
       return (
           <>
             <Alert text={"Member creation in progress. Please complete. "}/>
             <TableHeader>
               <h3>Members</h3>
               <TableHeaderRow>
-                <button className="button button-outline">Subscribe</button>
+                <button onClick={subscribeToNotifications} className="button button-outline">Subscribe</button>
                 <StyledLink to='/albums' className="button button-outline">Show Albums</StyledLink>
                 <StyledLink to='/members/new' className="button button-outline">Add Member</StyledLink>
               </TableHeaderRow>

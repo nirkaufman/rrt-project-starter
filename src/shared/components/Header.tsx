@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {AppState} from "../types/app-state";
+import {messageSelector} from "../../app/ui.slice";
 
 function Header() {
+  const message = useSelector<AppState, string>(messageSelector);
+
   return (
       <HeaderContainer>
         <span>ReactRedux workshop 2020</span>
-        <ServerMessage>This is a server update: you are ok</ServerMessage>
+        <ServerMessage>{message}</ServerMessage>
         <LogoutLink to="/" className="button button-clear">logout</LogoutLink>
       </HeaderContainer>
   );

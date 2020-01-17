@@ -5,10 +5,9 @@ let timer: any = null;
 
 websocket.onopen = () => {
     console.log("socket opened");
-
     timer = setInterval(() => {
-        websocket.send("Message from server: data updated.");
-    }, 10000);
+        websocket.send("Message from server: data updated." + Date.now());
+    }, 5000);
 };
 
 // return the message received from server
